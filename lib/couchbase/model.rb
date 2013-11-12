@@ -22,6 +22,7 @@ require 'couchbase/active_model'
 require 'couchbase/model/version'
 require 'couchbase/model/uuid'
 require 'couchbase/model/configuration'
+require 'active_model'
 
 unless Object.respond_to?(:singleton_class)
   require 'couchbase/model/ext/singleton_class'
@@ -34,6 +35,11 @@ unless ''.respond_to?(:camelize)
 end
 
 module Couchbase
+
+  # @private the thread local storage
+  def self.thread_storage
+    Thread.current[:couchbase] ||= { :bucket => {} }
+  end
 
   # @since 0.0.1
   class Error::MissingId < Error::Base; end
@@ -101,7 +107,6 @@ module Couchbase
   #    connect :port => 80, :bucket => 'blog'
   #  end
   class Model
-    include Couchbase::ActiveModel
 
     # Each model must have identifier
     #
@@ -726,8 +731,9 @@ module Couchbase
     #   attribute
     def reload
       raise Couchbase::Error::MissingId, 'missing id attribute' unless @id
-      attrs = model.find(@id).attributes
-      update_attributes(attrs)
+      pristine = model.find(@id)
+      update_attributes(pristine.attributes)
+      @meta[:cas] = pristine.meta[:cas]
       self
     end
 
@@ -844,6 +850,8 @@ module Couchbase
         keys.join('-')
       end
     end
+
+    include Couchbase::ActiveModel
   end
 
 end

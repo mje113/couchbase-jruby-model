@@ -30,14 +30,14 @@ class CouchbaseServer
   end
 
   def initialize(params = {})
-    @host, @port = ENV['COUCHBASE_SERVER'].split(':')
+    @host, @port = ['localhost', 8091] #ENV['COUCHBASE_SERVER'].split(':')
     @port = @port.to_i
 
     if @host.nil? || @host.empty? || @port == 0
       raise ArgumentError, 'Check COUCHBASE_SERVER variable. It should be hostname:port'
     end
 
-    @config = Yajl::Parser.parse(open("http://#{@host}:#{@port}/pools/default"))
+    @config = MultiJson.load(open("http://#{@host}:#{@port}/pools/default"))
     @num_nodes = @config['nodes'].size
     @buckets_spec = params[:buckets_spec] || 'default:'  # "default:,protected:secret,cache::memcache"
   end

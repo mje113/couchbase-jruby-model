@@ -15,13 +15,13 @@
 # limitations under the License.
 #
 
-require 'rubygems/package_task'
+# require 'rubygems/package_task'
 
-def gemspec
-  @clean_gemspec ||= eval(File.read(File.expand_path('../../couchbase-model.gemspec', __FILE__)))
-end
+# def gemspec
+#   @clean_gemspec ||= eval(File.read(File.expand_path('../../couchbase-model.gemspec', __FILE__)))
+# end
 
-Gem::PackageTask.new(gemspec) do |pkg|
-  pkg.need_tar = true
-end
+# Gem::PackageTask.new(gemspec) do |pkg|
+#   pkg.need_tar = true
+# end
 
