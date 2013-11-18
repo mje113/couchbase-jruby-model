@@ -108,6 +108,7 @@ module Rails #:nodoc:
 
       # Check (and upgrade if needed) all design documents
       initializer 'couchbase.upgrade_design_documents', :after => 'couchbase.setup_connection'  do |app|
+       puts "ASDFSDFASDF"
         ::Couchbase::Model::Configuration.design_documents_paths ||= app.config.paths['app/models']
         if config.couchbase.ensure_design_documents
           config.to_prepare do
