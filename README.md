@@ -1,6 +1,6 @@
 # Couchbase JRuby Model
 
-Unnoficial port of [Couchbase Ruby Model](https://github.com/couchbase/couchbase-ruby-model)
+Unofficial port of [Couchbase Ruby Model](https://github.com/couchbase/couchbase-ruby-model)
 to JRuby.  The only changes in this gem over the original is to load the (also)
 unnoficial [Couchbase JRuby Client](https://github.com/mje113/couchbase-jruby-client).
 
