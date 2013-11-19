@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.summary     = %q{Declarative interface to Couchbase (unofficial--targeting JRuby)}
   s.description = %q{ORM-like interface allows you to persist your models to Couchbase}
   s.license     = 'Apache'
-  s.platform    = Gem::Platform::JAVA
+  s.platform    = 'java'
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
