@@ -1,13 +1,8 @@
-# Couchbase Model
+# Couchbase JRuby Model
 
-This library allows to declare models for [couchbase gem][1].
-
-## SUPPORT
-
-If you found an issue, please file it in our [JIRA][3]. Also you are
-always welcome on `#libcouchbase` channel at [freenode.net IRC servers][4].
-
-Documentation: [http://rdoc.info/gems/couchbase-model](http://rdoc.info/gems/couchbase-model)
+Unnoficial port of [Couchbase Ruby Model](https://github.com/couchbase/couchbase-ruby-model)
+to JRuby.  The only changes in this gem over the original is to load the (also)
+unnoficial [Couchbase JRuby Client](https://github.com/mje113/couchbase-jruby-client).
 
 ## Rails integration
 

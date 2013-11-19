@@ -41,6 +41,8 @@ module Couchbase
     Thread.current[:couchbase] ||= { :bucket => {} }
   end
 
+  class Error::Timeout < Error::Base; end
+
   # @since 0.0.1
   class Error::MissingId < Error::Base; end
 
