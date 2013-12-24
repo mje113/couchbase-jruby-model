@@ -18,10 +18,11 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ['lib']
 
-  s.add_runtime_dependency 'couchbase-jruby-client', '~> 0.1.7'
+  s.add_runtime_dependency 'couchbase-jruby-client', '~> 0.1.8'
 
   s.add_development_dependency 'rake'
   s.add_development_dependency 'minitest'
-  s.add_development_dependency 'activesupport'
-  s.add_development_dependency 'activemodel'
+  s.add_development_dependency 'activesupport', '>= 4.0.2'
+  s.add_development_dependency 'activemodel',   '>= 4.0.2'
+  s.add_development_dependency 'pry'
 end
